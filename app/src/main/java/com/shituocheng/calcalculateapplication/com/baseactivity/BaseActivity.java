@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 
 /**
  * Created by shituocheng on 2016/11/19.
@@ -16,13 +17,24 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private View mContentView = null;
 
+    //是否包含fragment
+    private boolean isFragmentActivity = false;
+
+    //是否为沉浸式状态栏
+    private boolean isStatusBar = true;
+
     protected final String TAG = this.getClass().getName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContentView = LayoutInflater.from(this).inflate(bindLayout(), null);
+
+        if (isStatusBar){
+            steepStatusBar();
+        }
         setContentView(mContentView);
+
         initView();
     }
 
@@ -77,6 +89,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         //判断当前API为25
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1){
 
+        }
+    }
+
+    //设置沉浸式状态栏
+    private void steepStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // 透明状态栏
+            getWindow().addFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // 透明导航栏
+            getWindow().addFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
 }
