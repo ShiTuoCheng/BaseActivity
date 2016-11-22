@@ -37,5 +37,14 @@ public abstract class BaseFragment extends Fragment {
     public abstract void initView(View view);
 
     public abstract int bindLayout();
-    
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
 }
