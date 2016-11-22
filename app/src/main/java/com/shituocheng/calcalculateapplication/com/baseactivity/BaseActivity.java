@@ -113,6 +113,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    //打印逻辑
     protected void $Log(String msg) {
         if (isDebug) {
             Log.d(APP_NAME, msg);
