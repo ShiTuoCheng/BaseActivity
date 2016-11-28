@@ -20,7 +20,6 @@ public class TestFragment extends BaseFragment {
     //private TextView tx_view_test;
 
     //BufferKnife注入View
-
     @BindView(R.id.tx_view_test) TextView tx_view_test;
 
     public TestFragment() {
@@ -42,9 +41,9 @@ public class TestFragment extends BaseFragment {
     @Override
     public void initView(View view) {
 
-        //tx_view_test = (TextView)view.findViewById(R.id.tx_view_test);
+        tx_view_test = (TextView)view.findViewById(R.id.tx_view_test);
 
-        ButterKnife.bind(getActivity());
+        ButterKnife.bind(this, view);
 
     }
 

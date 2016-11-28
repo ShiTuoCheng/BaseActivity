@@ -51,6 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     //初始化view
     public abstract void initView();
 
+    //逻辑操作
 
 
     @Override
@@ -87,6 +88,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                                        int requestCode) {
         Intent intent = new Intent();
         intent.setClass(this, cls);
+
         if (bundle != null) {
             intent.putExtras(bundle);
         }

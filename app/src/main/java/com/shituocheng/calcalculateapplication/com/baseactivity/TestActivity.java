@@ -3,6 +3,7 @@ package com.shituocheng.calcalculateapplication.com.baseactivity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class TestActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,10 +42,12 @@ public class TestActivity extends BaseActivity
 
     @Override
     public void initView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        ButterKnife.bind(this);
+        //toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,13 +56,14 @@ public class TestActivity extends BaseActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -101,6 +107,9 @@ public class TestActivity extends BaseActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_test, new TestFragment()).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
+
+            getSupportActionBar().setTitle("TestFragment");
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
