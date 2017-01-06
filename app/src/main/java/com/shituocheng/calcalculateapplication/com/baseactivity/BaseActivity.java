@@ -27,9 +27,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected final String TAG = this.getClass().getName();
 
-    //判断是否有多线程操作
-    private boolean isMutiThread = false;
-
     private String APP_NAME;
 
     //APP是否为调试状态
@@ -53,9 +50,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     //初始化view
     public abstract void initView();
-
-    //逻辑操作
-    public abstract Runnable doSomething();
 
     @Override
     protected void onResume() {
