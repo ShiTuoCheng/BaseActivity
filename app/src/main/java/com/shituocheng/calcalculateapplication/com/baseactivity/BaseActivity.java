@@ -11,10 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
-/**
- * Created by shituocheng on 2016/11/19.
- */
-
 public abstract class BaseActivity extends AppCompatActivity {
 
     private View mContentView = null;
